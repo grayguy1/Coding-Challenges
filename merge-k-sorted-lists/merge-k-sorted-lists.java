@@ -9,9 +9,6 @@
  * }
  */
 class Solution {
-    //1 -> 1 -> 3 -> 4 -> 5
-    //4
-    //
     public ListNode mergeKLists(ListNode[] lists) {
         PriorityQueue<Integer> pq = new PriorityQueue<>();
         for (ListNode node : lists) {
