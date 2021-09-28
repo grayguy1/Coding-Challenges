@@ -16,11 +16,11 @@ class Solution {
             temp = temp.next;
             size++;
         }
-        int i = (size) / 2;
+        int i = 0;
         temp = head;
-        while (i > 0) {
+        while (i < size / 2) {
             temp = temp.next;
-            i--;
+            i++;
         }
         return temp;
     }
