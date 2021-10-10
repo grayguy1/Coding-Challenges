@@ -15,8 +15,8 @@ class Solution {
         int[][] mat = new int[nums.length][col];
         mat[0][total + nums[0]] = 1;
         mat[0][total - nums[0]] += 1;
-        for (int i = 1; i < nums.length; i++) {
-            for (int j = 0; j <= 2 * total; j++) {
+        for (int i = 1; i < mat.length; i++) {
+            for (int j = 0; j < mat[i].length; j++) {
                 if (mat[i - 1][j] > 0) {
                     mat[i][j + nums[i]] += mat[i - 1][j];
                     mat[i][j - nums[i]] += mat[i - 1][j];
