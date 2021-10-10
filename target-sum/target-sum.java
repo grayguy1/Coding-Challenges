@@ -1,10 +1,3 @@
-// [1,1,1,1,1]
-//    0  1  2  3  4
-// 0  
-// 1  
-// 2  
-// 3  
-// 4  
 class Solution {
     public int findTargetSumWays(int[] nums, int target) {
         int total = 0;
