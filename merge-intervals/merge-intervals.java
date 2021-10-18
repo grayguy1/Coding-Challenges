@@ -1,20 +1,25 @@
 class Solution {
     public int[][] merge(int[][] intervals) {
         Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
-        ArrayList<int[]> result = new ArrayList<>();
-        for (int i = 0; i < intervals.length; i++) {
-            int start = intervals[i][0];
-            int end = intervals[i][1];
-            while (i + 1 < intervals.length && intervals[i + 1][0] <= end) {
-                end = Math.max(end, intervals[i + 1][1]);
-                i++;
+        Stack<int[]> stack = new Stack<>();
+        stack.push(intervals[0]);
+        for (int i = 1; i < intervals.length; i++) {
+            int[] curr = stack.peek();
+            if (curr[1] >= intervals[i][0]) {
+                curr[1] = Math.max(curr[1], intervals[i][1]);
+                stack.pop();
+                stack.push(curr);
             }
-            result.add(new int[]{start, end});
+            else {
+                stack.push(intervals[i]);
+            }
         }
-        int[][] res = new int[result.size()][2];
-        for (int i = 0; i < result.size(); i++) {
-            res[i] = result.get(i);
+        int[][] merged = new int[stack.size()][2];
+        int i = 0;
+        while (!stack.isEmpty()) {
+            merged[i] = stack.pop();
+            i++;
         }
-        return res;
+        return merged;
     }
 }
